@@ -13,11 +13,12 @@ namespace Taxi
             while (true) //цикл проверки числа
             {
                 
-                if ((int.TryParse(Console.ReadLine(), out int x)) && (x >= 1) && (x <= 1000)) //условие проверки
+                if ((int.TryParse(Console.ReadLine(), out int x)) && (x >= 1) && (x <= 1000)) //условие проверки ввода количества людей и расстояния
                 {
                     prvrk = x;
                     break; //выход из цикла проверки
                 }
+                Console.WriteLine("Введено некорректное значение!");
             }
             return prvrk;
         }
@@ -30,11 +31,12 @@ namespace Taxi
             {
 
                 
-                if ((int.TryParse(Console.ReadLine(), out int x)) && (x >= 1) && (x <= 10000)) //условие проверки
+                if ((int.TryParse(Console.ReadLine(), out int x)) && (x >= 1) && (x <= 10000)) //условие проверки ввода цены
                 {
                     prvrk = x;
                     break; //выход из цикла проверки
                 }
+                Console.WriteLine("Введено некорректное значение!");
             }
             return prvrk;
         }
@@ -46,7 +48,7 @@ namespace Taxi
         {
             var test = new Test();
 
-            Console.WriteLine("Введите N");
+            Console.WriteLine("Введите N (Количество человек)");
             Console.WriteLine("(Целое число не меньше 1 и не больше 1000)");
             int N;
             N = test.Check(); //количество людей
@@ -101,13 +103,14 @@ namespace Taxi
             }
 
             Console.WriteLine();
+            Console.WriteLine("Номера такси: ");
 
             for (i = 0; i < N; i++) //логика вывода =D
             {
                 for (j = 0; j < N; j++)
                 {
-                    if(distance[i] == Sortdistance[j])
-                    {
+                    if(distance[i] == Sortdistance[j]) //дистанция[i] -> сортированная дистанция[j] -> сортированная цена[j] -> цена[k]
+                    {                                                                                                             // k <=> i, но без повторного вывода
                         for (k = 0; k < N; k++)
                         {
                             if (Sortprice[j] == Dupliprice[k])
