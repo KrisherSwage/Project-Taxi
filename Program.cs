@@ -9,10 +9,10 @@ namespace Taxi
         public int Check()
         {
             int prvrk;
-            
+
             while (true) //цикл проверки числа
             {
-                
+
                 if ((int.TryParse(Console.ReadLine(), out int x)) && (x >= 1) && (x <= 1000)) //условие проверки ввода количества людей и расстояния
                 {
                     prvrk = x;
@@ -26,11 +26,11 @@ namespace Taxi
         public int Check2()
         {
             int prvrk;
-            
+
             while (true) //цикл проверки числа
             {
 
-                
+
                 if ((int.TryParse(Console.ReadLine(), out int x)) && (x >= 1) && (x <= 10000)) //условие проверки ввода цены
                 {
                     prvrk = x;
@@ -52,29 +52,29 @@ namespace Taxi
             Console.WriteLine("(Целое число не меньше 1 и не больше 1000)");
             int N;
             N = test.Check(); //количество людей
-            
+
             List<int> distance = new List<int>(); //список (динамический массив) для расстояния
             List<int> price = new List<int>(); //список (динамический массив) для цен
 
             int i, j, k;
-            Console.WriteLine("Введите дистанцию");
+            Console.WriteLine("Введите дистанцию. Через enter");
             Console.WriteLine("(Целые числа не меньше 1 и не больше 1000)");
             for (i = 0; i < N; i++)
             {
                 distance.Add(test.Check());
             }
 
-            Console.WriteLine("Введите цену");
+            Console.WriteLine("Введите цену. Через enter");
             Console.WriteLine("(Целые числа не меньше 1 и не больше 10000)");
             for (j = 0; j < N; j++)
-            {  
+            {
                 price.Add(test.Check2());
             }
 
-         // List<int> Sortdistance = new List<int>();
-         // List<int> Sortprice = new List<int>();
-         // Sortdistance = distance;                //нерабочее копирование (происходит передача по ссылке, а нужна по значению)
-         // Sortprice = price;
+            // List<int> Sortdistance = new List<int>();
+            // List<int> Sortprice = new List<int>();
+            // Sortdistance = distance;                //нерабочее копирование (происходит передача по ссылке, а нужна по значению)
+            // Sortprice = price;
 
             List<int> Sortprice = price.ToList(); //правильное копирование
             List<int> Sortdistance = distance.ToList();
@@ -109,13 +109,13 @@ namespace Taxi
             {
                 for (j = 0; j < N; j++)
                 {
-                    if(distance[i] == Sortdistance[j]) //дистанция[i] -> сортированная дистанция[j] -> сортированная цена[j] -> цена[k]
+                    if (distance[i] == Sortdistance[j]) //дистанция[i] -> сортированная дистанция[j] -> сортированная цена[j] -> цена[k]
                     {                                                                                                             // k <=> i, но без повторного вывода
                         for (k = 0; k < N; k++)
                         {
                             if (Sortprice[j] == Dupliprice[k])
                             {
-                                Console.Write($"{k+1} ");
+                                Console.Write($"{k + 1} ");
                                 Dupliprice[k] = 0; //чтобы номер такси выводился единажды
                                 break;
                             }
